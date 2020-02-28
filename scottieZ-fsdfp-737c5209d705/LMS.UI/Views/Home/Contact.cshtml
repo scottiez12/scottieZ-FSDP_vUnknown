@@ -1,0 +1,58 @@
+﻿@model LMS.UI.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "contactForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="section-title">
+                        <h2>Contact<small>For all questions and broken material</small></h2>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", @placeholder = "Subject" } })
+                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control", @placeholder = "Please Type Message here..." } })
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <input type="submit" class="form-control" name="send message" value="Send Message">
+                    </div>
+                </div>
+                @*<div class="col-md-4 col-sm-12">
+                    <input type="submit" class="form-control" name="send message" value="Send Message">
+                </div>*@
+                <div class="col-md-6 col-sm-12">
+                    <div class="contact-image">
+                        <img src="~/Content/images/owlpic.jpg"  class="img-responsive" alt="Send Message Owl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

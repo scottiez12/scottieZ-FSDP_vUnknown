@@ -1,0 +1,78 @@
+﻿@model LMS.Data.EF.Lesson
+
+
+
+@{
+    ViewBag.Title = "GetUrlByID";
+
+    int id = 10;
+    
+   
+    var v = Model.VideoUrl.IndexOf("v=");
+    var amp = Model.VideoUrl.IndexOf("&", v);
+    string vid;
+    // if the video id is the last value in the url
+    if (amp == -1)
+    {
+        vid = Model.VideoUrl.Substring(v + 2);
+        // if there are other parameters after the video id in the url
+    }
+    else
+    {
+        vid = Model.VideoUrl.Substring(v + 2, amp - (v + 2));
+    }
+    ViewBag.VideoID = vid;
+
+}
+
+<h2>GetUrlByID</h2>
+
+<h2>YouTubeTest2</h2>
+<div id="player"></div>
+*
+<script src="http://www.youtube.com/player_api"></script>*
+
+*
+<script>
+// create youtube player
+var player;
+var h = '@ViewBag.height';
+var w = '@ViewBag.width';
+function onYouTubePlayerAPIReady() {
+player = new YT.Player('player', {
+height: 360,
+width: 640,
+modestbranding: 1,
+    //this works loosely, but want to find a way to grab a specific ID instead of having to put them in every time
+videoId: '@ViewBag.VideoID',
+playerVars: {
+rel: 0,
+autoplay: 0,
+disablekb: 0,
+showsearch: 0,
+showinfo: 0,
+controls: 1,
+fs: 1,
+hd: 1,
+html5: 1,
+iv_load_policy: 3
+},
+events: {
+onReady: onPlayerReady,
+onStateChange: onPlayerStateChange
+}
+});
+}
+// autoplay video
+function onPlayerReady(event) {
+event.target.playVideo();
+}
+
+// when video ends
+function onPlayerStateChange(event) {
+if(event.data === 0) {
+//do something on end;
+alert('done');
+}
+}
+</script>*

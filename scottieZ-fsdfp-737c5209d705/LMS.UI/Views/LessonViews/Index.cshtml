@@ -1,0 +1,81 @@
+﻿@model IEnumerable<LMS.Data.EF.LessonView>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Lessons Viewed";
+
+
+
+
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Manually Add Lesson Viewed", "Create")
+    </p>
+}
+
+<table class="table">
+    <tr>
+           <th>
+                @Html.DisplayName("Employee")
+            </th>
+            <th>
+                @Html.DisplayName("Date Viewed")
+            </th>
+            <th>
+                @Html.DisplayName("Lesson")
+            </th>
+            <th>
+                @Html.DisplayName("Job")
+            </th>
+            <th>
+                @Html.DisplayName("Course")
+            </th>     
+        @*<th>
+                @Html.DisplayNameFor(model => model.Lesson.LessonTitle)
+            </th>*@
+        <th></th>
+    </tr>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.FullName)
+        </td>
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.DateViewed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lesson.LessonTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee.Job.JobName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lesson.Cours.CourseName)
+        </td>
+        <td>
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.LessonViewID }) @:|
+                @Html.ActionLink("Details", "Details", new { id = item.LessonViewID }) @:|
+                @Html.ActionLink("Delete", "Delete", new { id = item.LessonViewID }) 
+
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Go To Course Completions", "Index", "CourseCompletions", null, new {id = item.LessonViewID})
+        </td>
+    </tr>
+}
+
+</table>

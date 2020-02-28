@@ -1,0 +1,77 @@
+﻿@model IEnumerable<LMS.Data.EF.Employee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (User.IsInRole("Admin"))
+{<p>
+        @Html.ActionLink("Manually Add Employee", "Create")
+    </p>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("First Name")
+        </th>
+        <th>
+            @Html.DisplayName("Last Name")
+        </th>
+        <th>
+            @Html.DisplayName("Manager Credentials")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayName("Job ID")
+        </th>
+        @*<th>
+            @Html.DisplayName("Job Dept")
+        </th>*@
+        <th>
+            @Html.DisplayName("Reports to Manager ID:")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsManager)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.JobID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportsToID)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserID })@: |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserID }) @:|
+                @Html.ActionLink("Details", "Details", new { id = item.UserID })
+
+                }
+            </td>
+        </tr>
+                }
+
+</table>

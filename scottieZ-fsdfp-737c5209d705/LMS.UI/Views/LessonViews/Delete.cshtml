@@ -1,0 +1,59 @@
+﻿@model LMS.Data.EF.LessonView
+
+@{
+    ViewBag.Title = "Delete Lesson View Record";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Are you sure you want to delete this lesson view record??</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Employee")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Date Viewed")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateViewed)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Lesson")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lesson.LessonTitle)
+        </dd>
+        <dt>
+            @Html.DisplayName("Job")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Job)
+        </dd>
+        <dt>
+            @Html.DisplayName("Course")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lesson.Cours)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete Record" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

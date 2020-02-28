@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.UI", "scottieZ-fsdfp-737c5209d705\LMS.UI\LMS.UI.csproj", "{552C15BE-6A67-4A30-89DF-057EE064E9D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Data.EF", "scottieZ-fsdfp-737c5209d705\LMS.Data.EF\LMS.Data.EF.csproj", "{FD5470F4-9064-4393-86AD-DD08D0D524CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{552C15BE-6A67-4A30-89DF-057EE064E9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552C15BE-6A67-4A30-89DF-057EE064E9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552C15BE-6A67-4A30-89DF-057EE064E9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552C15BE-6A67-4A30-89DF-057EE064E9D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5470F4-9064-4393-86AD-DD08D0D524CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5470F4-9064-4393-86AD-DD08D0D524CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5470F4-9064-4393-86AD-DD08D0D524CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5470F4-9064-4393-86AD-DD08D0D524CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86CD6ED8-16DD-44AF-95DA-B160C471395C}
+	EndGlobalSection
+EndGlobal

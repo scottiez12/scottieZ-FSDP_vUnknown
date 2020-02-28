@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LMS.Data.EF.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New Course", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Course")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayName("Course Active")
+        </th>
+        <th>
+            @Html.DisplayName("Course ID")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseID)
+        </td>
+        <td>
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) @:|
+            @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })@:|
+            @Html.ActionLink("Details", "Details", new { id = item.CourseID })
+        }      
+        </td>
+    </tr>
+}
+
+</table>
